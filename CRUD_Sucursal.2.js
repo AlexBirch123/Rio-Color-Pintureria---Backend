@@ -1,3 +1,33 @@
+//Eventos de los botones por ID
+const b_new = document.getElementById('b_new');
+const b_show = document.getElementById('b_show');
+const b_mod = document.getElementById('b_mod');
+const b_del = document.getElementById('b_del');
+
+b_new.addEventListener('click', () => {
+  p.creatSucursal()
+  console.log('nueva sucursal');
+});
+
+b_show.addEventListener('click', () => {
+  let op = prompt("Ingrese ID de la sucursal");
+  p.showSucursal(op);
+  console.log('mostrar sucursal numero:');
+});
+
+b_mod.addEventListener('click', () => {
+  p.updateSucursal();
+  console.log('modificar sucursal numero:');
+});
+
+b_del.addEventListener('click', () => {
+  p.delSucursal();
+  console.log('eliminar');
+});
+
+
+//Creacion de Clases y metodos
+
 class Pintureria {
   sucursales = [];
   nombre;
@@ -28,12 +58,13 @@ class Pintureria {
     this.sucursales.push(suc);
   }
 
-  showSucursal(id) {
-    let f = this.sucursales.find((sucursal) => sucursal.id === id);
+  showSucursal(idSuc) {
+    let f = this.sucursales.find((sucursal) => sucursal.id === idSuc);
     if (typeof f !== undefined) {
-      return console.log(f);
+      console.log(f);
+      return 0;
     }
-    return console.error('No se encontro la sucursal solicitada');
+    console.error('No se encontro la sucursal solicitada');
   }
 
   searchSucursal(id) {
@@ -76,6 +107,9 @@ class Sucursal {
   }
 }
 
+const p = new Pintureria('Rio Color');
+
+/*
 function menu(pin) {
   let op = Number(
     prompt(
@@ -108,6 +142,6 @@ function menu(pin) {
     );
   }
 }
+*/
 
-const p = new Pintureria('Rio Color');
-menu(p);
+
