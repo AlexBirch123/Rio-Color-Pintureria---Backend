@@ -27,36 +27,25 @@ app.get('/perfil', (req, res) => {
 app.get('/tienda', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'tienda.html'));
 });
+app.get('/sucursales', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'sucursales.html'));
+});
+app.get('/clientes', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'clientes.html'));
+});
+app.get('/empleados', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'empleados.html'));
+});
+app.get('/productos', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'productos.html'));
+});
+app.get('/proveedores', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'proveedores.html'));
+});
+app.get('/ventas', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'ventas.html'));
+});
 // Inicia el servidor
 app.listen(3000, () => {
   console.log(`Servidor escuchando en http://localhost:3000`);
 });
-
-/*
-import express from 'express';
-
-const app = express();
-const PORT = 3000;
-
-app.use(express.static('public'));
-
-app.listen(PORT, () => {
-  console.log(`Servidor corriendo en http://localhost:${PORT}`);
-});
-
-app.get('/tienda', (req, res) => {
-  res.sendFile(__dirname + '/public/index.html');
-});
-app.get('/favoritos', (req, res) => {
-  res.sendFile(__dirname + '/public/favoritos.html');
-});
-app.get('/carrito', (req, res) => {
-  res.sendFile(__dirname + '/public/carrito.html');
-});
-app.get('/perfil', (req, res) => {
-  res.sendFile(__dirname + '/public/perfil.html');
-});
-app.get('/', (req, res) => {
-  res.sendFile(__dirname + '/public/tienda.html');
-});
-*/

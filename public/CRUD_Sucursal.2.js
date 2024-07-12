@@ -5,12 +5,12 @@ const b_mod = document.getElementById('b_mod');
 const b_del = document.getElementById('b_del');
 
 b_new.addEventListener('click', () => {
-  p.creatSucursal()
+  p.creatSucursal();
   console.log('nueva sucursal');
 });
 
 b_show.addEventListener('click', () => {
-  let op = prompt("Ingrese ID de la sucursal");
+  let op = prompt('Ingrese ID de la sucursal');
   p.showSucursal(op);
   console.log('mostrar sucursal numero:');
 });
@@ -24,7 +24,6 @@ b_del.addEventListener('click', () => {
   p.delSucursal();
   console.log('eliminar');
 });
-
 
 //Creacion de Clases y metodos
 
@@ -108,40 +107,3 @@ class Sucursal {
 }
 
 const p = new Pintureria('Rio Color');
-
-/*
-function menu(pin) {
-  let op = Number(
-    prompt(
-      'Ingrese una opcion\n1-Crear Sucursal\n2-Buscar Sucursal\n3-Eliminar Sucursal\n4-Actualiza Sucursal'
-    )
-  );
-  while (0 < op && 4 >= op) {
-    switch (op) {
-      case 1:
-        pin.creatSucursal();
-        break;
-      case 2:
-        pin.searchSucursal(Number(prompt('Ingrese id de sucursal a buscar')));
-        break;
-      case 3:
-        pin.delSucursal(Number(prompt('Ingrese id de sucursal a eliminar')));
-        break;
-      case 4:
-        pin.updateSucursal(
-          Number(prompt('Ingrese id de sucursal a actualizar')),
-          String(prompt('Ingrese direccion')),
-          Number(prompt('Ingrese telefono'))
-        );
-        break;
-    }
-    op = Number(
-      prompt(
-        'Ingrese una opcion\n1-Crear Sucursal\n2-Buscar Sucursal\n3-Eliminar Sucursal\n4-Actualiza Sucursal'
-      )
-    );
-  }
-}
-*/
-
-
