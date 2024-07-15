@@ -10,19 +10,21 @@ b_new.addEventListener('click', () => {
 });
 
 b_show.addEventListener('click', () => {
-  let op = prompt('Ingrese ID de la sucursal');
-  p.showSucursal(op);
-  console.log('mostrar sucursal numero:');
+  //
+  p.showSucursal();
+  // console.log('mostrar sucursal numero:');
 });
 
 b_mod.addEventListener('click', () => {
-  p.updateSucursal();
-  console.log('modificar sucursal numero:');
+  let op = Number(prompt('Ingrese ID de la sucursal'));
+  p.updateSucursal(op);
+  console.log('Se modifico una sucursal');
 });
 
 b_del.addEventListener('click', () => {
-  p.delSucursal();
-  console.log('eliminar');
+  let op = Number(prompt('Ingrese ID de la sucursal'));
+  p.delSucursal(op);
+  console.log('eliminada');
 });
 
 //Creacion de Clases y metodos
@@ -48,15 +50,17 @@ class Pintureria {
       let tel = prompt('Ingrese telefono de la sucursal');
       const s = new Sucursal(id, direc, tel);
       console.log(s);
-      this.addSucursal(s);
+      this.sucursales.push(s); // agrega nueva sucursal al array sucursales
       op = confirm('Desea agregar otra sucursal?');
     }
   }
 
-  addSucursal(suc) {
-    this.sucursales.push(suc);
+  showSucursal() {
+    // Muestra las sucursales cargadas
+    this.sucursales.forEach((sucursal) => console.log(sucursal));
   }
 
+  /*
   showSucursal(idSuc) {
     let f = this.sucursales.find((sucursal) => sucursal.id === idSuc);
     if (typeof f !== undefined) {
@@ -65,32 +69,35 @@ class Pintureria {
     }
     console.error('No se encontro la sucursal solicitada');
   }
-
-  searchSucursal(id) {
-    let f = this.sucursales.find((sucursal) => sucursal.id === id);
-    if (typeof f !== undefined) {
-      return f;
-    }
-    return console.error('No se encontro la sucursal solicitada');
+*/
+  searchSucursal(idsuc) {
+    //Busca una sucursal por id
+    const f = this.sucursales.find((sucursal) => sucursal.id === idsuc);
+    console.log(f);
+    return f;
   }
 
   delSucursal(id) {
+    //Elimina una sucursal
     const suc = this.sucursales.findIndex((sucursal) => sucursal.id === id);
     if (suc !== -1) {
       this.sucursales.splice(suc, 1);
       return console.log('Sucursal eliminada con exito');
-    }
-    return console.error('sucursal no encontrada');
+    } else console.error('sucursal no encontrada');
+    return 0;
   }
 
-  updateSucursal(id, dir, tel) {
+  updateSucursal(id) {
+    //Actualiza una sucursal
     const suc = this.searchSucursal(id);
-    if (suc) {
-      suc.direccion = dir;
-      suc.telefono = tel;
-      return true;
-    }
-    return console.error('sucursal no encontrada');
+    console.log(suc);
+    if (suc !== undefined) {
+      suc.direccion = prompt('Ingrese direccion de la sucursal');
+      suc.telefono = prompt('Ingrese telefono de la sucursal');
+      console.log(suc);
+      return 0;
+    } else console.error('sucursal no encontrada');
+    return 0;
   }
 }
 
